@@ -86,4 +86,29 @@ public class TicketDAO {
         }
         return false;
     }
+    public boolean isRegularCustomer(String vehiculeRegNumber){
+        Connection con = null;
+        PreparedStatement ps = null ;
+        boolean customerIsRegular = false;
+
+        try {
+            con = dataBaseConfig.getConnection();
+            ps = con.prepareStatement(DBConstants.IS_REGULAR_CUSTOMER);
+            ps.setString(1, vehiculeRegNumber);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                customerIsRegular = rs.getBoolean(1);
+            }
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+        }
+        catch (Exception ex){
+            logger.error("Error saving ticket info",ex);
+        }
+        finally {
+            dataBaseConfig.closePreparedStatement(ps);
+            dataBaseConfig.closeConnection(con);
+            return customerIsRegular;
+        }
+    }
 }
