@@ -61,7 +61,7 @@ public class ParkingDataBaseIT {
 
         //TODO: check that a ticket is actualy saved in DB and Parking table is updated with availability
 
-        //Etape1 recuperer le ticket du vehicule imatriculer 'ABCDEF'
+        //e1 recuperer le ticket du vehicule imatriculer 'ABCDEF'
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
 
         //ETape2 verifier l'existence du ticket

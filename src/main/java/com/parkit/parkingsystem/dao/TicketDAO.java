@@ -110,5 +110,6 @@ public class TicketDAO {
             dataBaseConfig.closeConnection(con);
             return customerIsRegular;
         }
+
     }
 }
