@@ -65,16 +65,13 @@ public class ParkingDataBaseIT {
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
 
         //ETape2 verifier l'existence du ticket
-        Assert.assertNotNull(ticket);
+        Assertions.assertNotNull(ticket);
 
         //ETape3 recuperer le parking spot
         ParkingSpot parkingSpot = ticket.getParkingSpot();
 
         //ETape4 verifier son existence
-        Assert.assertNotNull(parkingSpot);
-
-        //ETape5 verfier l'etat de la colonne availaibale est a false
-        Assertions.assertFalse(parkingSpot.isAvailable());
+        Assertions.assertNotNull(parkingSpot);
 
         //ETape5 verfier l'etat de la colonne availaibale est a false
         Assertions.assertFalse(parkingSpot.isAvailable());
@@ -97,29 +94,29 @@ public class ParkingDataBaseIT {
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
 
         //Etape on verifie l'éxistence
-        Assert.assertNotNull(ticket);
+        Assertions.assertNotNull(ticket);
 
         //Etape on recupere le time in
          Date timeIn = ticket.getInTime();
 
         //Etape on verifie l'éxistence
-        Assert.assertNotNull(timeIn);
+        Assertions.assertNotNull(timeIn);
 
         //Etape on recupere le time out
         Date timeOut = ticket.getOutTime();
 
         //Etape on verifie l'éxistence
-        Assert.assertNotNull(timeOut);
+        Assertions.assertNotNull(timeOut);
 
         //Etape on recupere le prix du ticket pour une voiture
         double price = ticket.getPrice();
         System.out.println(price);
 
         // on verifie son existance
-        Assert.assertNotNull(price);
+        Assertions.assertNotNull(price);
 
 
-        // Etape verfication du pris attendu et du prix obtenu
+        // Etape verfication du prix attendu et du prix obtenu
         // 5d corespond au 5 sec attendu( Thread.sleep(5000));
         Assertions.assertEquals(Math.round((5d/3600d)* Fare.CAR_RATE_PER_HOUR),Math.round(ticket.getPrice()));
 
